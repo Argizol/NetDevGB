@@ -17,19 +17,22 @@ namespace UDPClient
             UdpClient udpClient = new UdpClient();
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 45512);
 
-            string message;
-            do
+            while (true)
             {
-                Console.WriteLine("Введите сообщение");
-                message = Console.ReadLine();
+                string message;
+                do
+                {
+                    
+                    Console.WriteLine("Введите сообщение");
+                    message = Console.ReadLine();
+                    Console.Clear();
+                } while (string.IsNullOrEmpty(message));
 
-            } while (string.IsNullOrEmpty(message));
-
-            Message msg = new Message() { Text = message, NickNameFrom = from, NickNameTo = "Server", DateTime = DateTime.Now };
-            var JSONmsg = msg.SerialazeMessageToJSON();
-            byte[] buffer = Encoding.UTF8.GetBytes(JSONmsg);
-            udpClient.Send(buffer, buffer.Length, iPEndPoint);
-
+                Message msg = new Message() { Text = message, NickNameFrom = from, NickNameTo = "Server", DateTime = DateTime.Now };
+                var JSONmsg = msg.SerialazeMessageToJSON();
+                byte[] buffer = Encoding.UTF8.GetBytes(JSONmsg);
+                udpClient.Send(buffer, buffer.Length, iPEndPoint);
+            }
         }
     }
 }

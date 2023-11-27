@@ -17,15 +17,15 @@ namespace NetProgramm
         public string SerialazeMessageToJSON() => JsonSerializer.Serialize(this);
      
         public static Message? DeserializeMessgeFromJSON(string message) => JsonSerializer.Deserialize<Message>(message);
-        
+
         public string PrintGetMessageFrom()
         {
-            return $"{DateTime} \n Получено сообщение {Text} \n от {NickNameFrom}  ";
+            return ToString();
         }
 
         public override string ToString()
         {
-            return $" ";
+            return $"{DateTime} \n Получено сообщение {Text} \n от {NickNameFrom}  ";
         }
     }
 }

@@ -22,8 +22,9 @@ namespace NetProgramm
 
                 var messageTxt = Encoding.UTF8.GetString(buffer);
 
-                Message? message = Message.DeserializeMessgeFromJSON(messageTxt);                
+                Message? message = Message.DeserializeMessgeFromJSON(messageTxt);
 
+                Console.WriteLine(message.PrintGetMessageFrom().ToString());
             }
         }
     }

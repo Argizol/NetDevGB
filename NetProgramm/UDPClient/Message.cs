@@ -20,12 +20,12 @@ namespace NetProgramm
         
         public string PrintGetMessageFrom()
         {
-            return $"{DateTime} \n Получено сообщение {Text} \n от {NickNameFrom}  ";
+            return ToString();
         }
 
         public override string ToString()
         {
-            return $" ";
+            return $"{DateTime} \n Получено сообщение {Text} \n от {NickNameFrom}  ";
         }
     }
 }
