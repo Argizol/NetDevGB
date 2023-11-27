@@ -12,14 +12,16 @@ namespace UDPClient
 {
     internal class UDPClient
     {
-        public static void SendMessage(string from, string ip)
+        public static void SendMessage()
         {
             UdpClient udpClient = new UdpClient();
-            IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 45512);
+            IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 45512);
 
             while (true)
             {
-                string message;
+                Console.WriteLine("От кого?");
+                string? from = Console.ReadLine();
+                string? message;
                 do
                 {
                     

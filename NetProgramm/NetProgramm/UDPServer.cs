@@ -24,7 +24,7 @@ namespace NetProgramm
 
                 Message? message = Message.DeserializeMessgeFromJSON(messageTxt);
 
-                Console.WriteLine(message.PrintGetMessageFrom().ToString());
+                message.PrintGetMessageFrom();
             }
         }
     }

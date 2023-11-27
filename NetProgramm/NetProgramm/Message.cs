@@ -9,18 +9,18 @@ namespace NetProgramm
 {
     internal class Message
     {
-        string Text {  get; set; }
-        DateTime DateTime { get; set; }
-        string? NickNameFrom { get; set; }
-        string? NickNameTo { get; set; }
+        public string Text { get; set; }
+        public DateTime DateTime { get; set; }
+        public string? NickNameFrom { get; set; }
+        public string? NickNameTo { get; set; }
 
         public string SerialazeMessageToJSON() => JsonSerializer.Serialize(this);
      
         public static Message? DeserializeMessgeFromJSON(string message) => JsonSerializer.Deserialize<Message>(message);
 
-        public string PrintGetMessageFrom()
+        public void PrintGetMessageFrom()
         {
-            return ToString();
+            Console.WriteLine(ToString());
         }
 
         public override string ToString()
