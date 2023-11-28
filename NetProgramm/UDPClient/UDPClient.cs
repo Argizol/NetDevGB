@@ -12,7 +12,7 @@ namespace UDPClient
 {
     internal class UDPClient
     {
-        public static void SendMessage()
+        public static async Task SendMessageAsync()
         {
             UdpClient udpClient = new UdpClient();
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 45512);
@@ -23,17 +23,18 @@ namespace UDPClient
                 string? from = Console.ReadLine();
                 string? message;
                 do
-                {
-                    
+                {                   
                     Console.WriteLine("Введите сообщение");
                     message = Console.ReadLine();
                     Console.Clear();
+
                 } while (string.IsNullOrEmpty(message));
 
                 Message msg = new Message() { Text = message, NickNameFrom = from, NickNameTo = "Server", DateTime = DateTime.Now };
                 var JSONmsg = msg.SerialazeMessageToJSON();
                 byte[] buffer = Encoding.UTF8.GetBytes(JSONmsg);
-                udpClient.Send(buffer, buffer.Length, iPEndPoint);
+                int bytes = await udpClient.SendAsync(buffer, buffer.Length, iPEndPoint);
+                Console.WriteLine($"отправлено {bytes} байт");
             }
         }
     }

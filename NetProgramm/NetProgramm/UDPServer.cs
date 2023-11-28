@@ -10,10 +10,11 @@ namespace NetProgramm
 {
     internal class UDPServer
     {
-        public void Server()
+        public async Task ServerListenerAsync()
         {
             UdpClient udpClient = new UdpClient(45512);
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            IPEndPoint remoteIP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 0);
             Console.WriteLine("Сервер ждет сообщение от клиента");
             
             while (true)
@@ -21,6 +22,12 @@ namespace NetProgramm
                 byte[] buffer = udpClient.Receive(ref iPEndPoint);
 
                 var messageTxt = Encoding.UTF8.GetString(buffer);
+                Console.WriteLine($"получено {buffer.Length} байт") ;
+                                
+                byte[] reply = Encoding.UTF8.GetBytes("Сообщение получено");
+                
+                int bytes = await udpClient.SendAsync(reply, iPEndPoint);
+                Console.WriteLine($"отправлено {bytes} байт");
 
                 Message? message = Message.DeserializeMessgeFromJSON(messageTxt);
 
