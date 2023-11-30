@@ -16,8 +16,8 @@ namespace NetProgramm
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Any, 0);
             IPEndPoint remoteIP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 0);
             Console.WriteLine("Сервер ждет сообщение от клиента");
-            
-            while (true)
+            bool canWork = true;
+            while (canWork)
             {
                 byte[] buffer = udpClient.Receive(ref iPEndPoint);
 
@@ -30,7 +30,7 @@ namespace NetProgramm
                 Console.WriteLine($"отправлено {bytes} байт");
 
                 Message? message = Message.DeserializeMessgeFromJSON(messageTxt);
-
+                if(message.Text.ToLower().Equals("exit") ) canWork = false;
                 message.PrintGetMessageFrom();
             }
         }

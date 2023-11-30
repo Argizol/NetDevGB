@@ -35,6 +35,9 @@ namespace UDPClient
                 byte[] buffer = Encoding.UTF8.GetBytes(JSONmsg);
                 int bytes = await udpClient.SendAsync(buffer, buffer.Length, iPEndPoint);
                 Console.WriteLine($"отправлено {bytes} байт");
+
+                byte[] recieiveBuf = udpClient.Receive(ref iPEndPoint);                
+                Console.WriteLine($"получено {recieiveBuf.Length} байт");
             }
         }
     }

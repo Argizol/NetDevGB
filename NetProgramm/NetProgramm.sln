@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPServer", "NetProgramm\UDPServer.csproj", "{EFC71671-C7B7-4779-A005-B06A83AACFDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDPServer", "NetProgramm\UDPServer.csproj", "{EFC71671-C7B7-4779-A005-B06A83AACFDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPClient", "UDPClient\UDPClient.csproj", "{CF3BE80B-34E6-4C3C-902F-0CACCE61C014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDPClient", "UDPClient\UDPClient.csproj", "{CF3BE80B-34E6-4C3C-902F-0CACCE61C014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threads", "Threads\Threads.csproj", "{99655D88-E31F-43DA-AF42-955BAB5D1D23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CF3BE80B-34E6-4C3C-902F-0CACCE61C014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3BE80B-34E6-4C3C-902F-0CACCE61C014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF3BE80B-34E6-4C3C-902F-0CACCE61C014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99655D88-E31F-43DA-AF42-955BAB5D1D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99655D88-E31F-43DA-AF42-955BAB5D1D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99655D88-E31F-43DA-AF42-955BAB5D1D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99655D88-E31F-43DA-AF42-955BAB5D1D23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
