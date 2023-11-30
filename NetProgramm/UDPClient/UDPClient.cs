@@ -17,7 +17,8 @@ namespace UDPClient
             UdpClient udpClient = new UdpClient();
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 45512);
 
-            while (true)
+            bool canWork = true;
+            while (canWork)
             {
                 Console.WriteLine("От кого?");
                 string? from = Console.ReadLine();
@@ -25,7 +26,7 @@ namespace UDPClient
                 do
                 {                   
                     Console.WriteLine("Введите сообщение");
-                    message = Console.ReadLine();
+                    message = Console.ReadLine();                    
                     Console.Clear();
 
                 } while (string.IsNullOrEmpty(message));
@@ -35,7 +36,7 @@ namespace UDPClient
                 byte[] buffer = Encoding.UTF8.GetBytes(JSONmsg);
                 int bytes = await udpClient.SendAsync(buffer, buffer.Length, iPEndPoint);
                 Console.WriteLine($"отправлено {bytes} байт");
-
+                if (message.ToLower().Equals("exit")) canWork = false;
                 byte[] recieiveBuf = udpClient.Receive(ref iPEndPoint);                
                 Console.WriteLine($"получено {recieiveBuf.Length} байт");
             }
