@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDPClient", "UDPClient\UDPC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Threads", "Threads\Threads.csproj", "{99655D88-E31F-43DA-AF42-955BAB5D1D23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{F5C60112-04D9-48E8-8B16-8150E1C12C9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFSeminar", "EF\EFSeminar.csproj", "{F5C60112-04D9-48E8-8B16-8150E1C12C9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
