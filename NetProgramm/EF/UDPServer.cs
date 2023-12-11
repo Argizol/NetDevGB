@@ -18,7 +18,6 @@ namespace NetProgramm
                 Console.WriteLine("Message Register, name = " + message.NickNameFrom);
                 clients.Add(message.NickNameFrom, fromep);
 
-
                 using (var ctx = new ChatContext())
                 {
                     if (ctx.Users.FirstOrDefault(x => x.FullName == message.NickNameFrom) != null) return;
@@ -62,9 +61,14 @@ namespace NetProgramm
                         id = msg.MessageId;
                     }
 
-
-                    var forwardMessageJson = new NetMessage() { Id = id, Command = Command.Message, NickNameTo = message.NickNameTo,
-                        NickNameFrom = message.NickNameFrom, Text = message.Text }.SerialazeMessageToJSON();
+                    var forwardMessageJson = new NetMessage()
+                    {
+                        Id = id,
+                        Command = Command.Message,
+                        NickNameTo = message.NickNameTo,
+                        NickNameFrom = message.NickNameFrom,
+                        Text = message.Text
+                    }.SerialazeMessageToJSON();
 
                     byte[] forwardBytes = Encoding.ASCII.GetBytes(forwardMessageJson);
 
@@ -99,7 +103,6 @@ namespace NetProgramm
                 }
             }
 
-
             public void Work()
             {
 
@@ -133,3 +136,4 @@ namespace NetProgramm
             }
         }
     }
+}
