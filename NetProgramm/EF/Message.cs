@@ -1,6 +1,6 @@
 ﻿public class Message
 {
-    public int MessageId { get; set; }
+    public int? MessageId { get; set; }
     public string? Text { get; set; }
     public DateTime DateSend { get; set; }
     public bool IsSent { get; set; }

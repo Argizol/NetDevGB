@@ -14,12 +14,12 @@ namespace EFSeminar
 
         public ChatContext(DbContextOptions<ChatContext> dbc) : base(dbc)
         {
-            Database.EnsureCreated();
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localdb; Database=GB; Trusted_Connection=True;")
+            optionsBuilder.UseSqlServer(@"Server=Hirofumi; Database=GB;Integrated Security=False;TrustServerCertificate=True; Trusted_Connection=True;")
                 .UseLazyLoadingProxies();
         }
 
