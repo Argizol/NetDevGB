@@ -1,64 +1,67 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EF
+public class ChatContext : DbContext
 {
-    internal class ChatContext : DbContext
+    public DbSet<User> Users { get; set; }
+    public DbSet<Message> Messages { get; set; }
+
+    public ChatContext()
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Message> Messages { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+    }
+
+    public ChatContext(DbContextOptions<ChatContext> dbc) : base(dbc)
+    {
+
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=.; Database=GB; Trusted_Connection=True;").UseLazyLoadingProxies();
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<User>(entity =>
         {
-            optionsBuilder.UseSqlServer("Server=localhost; Database=GB; Trusted_Connection=True;").UseLazyLoadingProxies();
-        }
+            entity.ToTable("users");
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.ToTable("users");
+            entity.HasKey(x => x.Id).HasName("userPk");
+            entity.HasIndex(x => x.FullName).IsUnique();
 
-                entity.HasKey(x => x.Id).HasName("userPk");
-                entity.HasIndex(x => x.FullName).IsUnique();
+            entity.Property(e => e.FullName)
+           .HasColumnName("FullName")
+           .HasMaxLength(255)
+           .IsRequired();
 
-                entity.Property(e => e.FullName)
-               .HasColumnName("FullName")
-               .HasMaxLength(255)
-               .IsRequired();
+        });
 
-            });
-
-            modelBuilder.Entity<Message>(entity =>
-            {
-
-                entity.ToTable("messages");
-
-                entity.HasKey(x => x.MessageId).HasName("messagePk");
-                
-
-                entity.Property(e => e.Text)
-                .HasColumnName("messageText");
-                entity.Property(e => e.DateSend)
-                .HasColumnName("messageData");
-                entity.Property(e => e.IsSent)
-                .HasColumnName("is_sent");
-                entity.Property(e => e.MessageId)
-                .HasColumnName("id");
-
-                entity.HasOne(x => x.UserTo)
-                .WithMany(m => m.MessagesTo)
-                .HasForeignKey(x => x.UserToId)
-                .HasConstraintName("messageToUserFK");
-                entity.HasOne(x => x.UserFrom)
-                .WithMany(m => m.MessagesFrom)
-                .HasForeignKey(x => x.UserFromId)
-                .HasConstraintName("messageFromUserFK");
-            });
-        }
-
-
-        public ChatContext()
+        modelBuilder.Entity<Message>(entity =>
         {
 
-        }
+            entity.ToTable("messages");
+
+            entity.HasKey(x => x.MessageId).HasName("messagePk");
+
+
+            entity.Property(e => e.Text)
+            .HasColumnName("messageText");
+            entity.Property(e => e.DateSend)
+            .HasColumnName("messageData");
+            entity.Property(e => e.IsSent)
+            .HasColumnName("is_sent");
+            entity.Property(e => e.MessageId)
+            .HasColumnName("id");
+
+            entity.HasOne(x => x.UserTo)
+            .WithMany(m => m.MessagesTo)
+            .HasForeignKey(x => x.UserToId)
+            .HasConstraintName("messageToUserFK");
+            entity.HasOne(x => x.UserFrom)
+            .WithMany(m => m.MessagesFrom)
+            .HasForeignKey(x => x.UserFromId)
+            .HasConstraintName("messageFromUserFK");
+        });        
     }
 }

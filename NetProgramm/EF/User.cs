@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF
-{
-    internal class User
+
+    public class User
     {
         public virtual List<Message>? MessagesTo {  get; set; } = new();
         public virtual List<Message>? MessagesFrom { get; set; } = new();
@@ -14,4 +13,3 @@ namespace EF
         public string? FullName { get; set; }  
 
     }
-}
