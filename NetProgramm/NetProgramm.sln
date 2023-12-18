@@ -13,15 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFSeminar", "EF\EFSeminar.c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatClientUnitTests", "ChatClientUnitTests\ChatClientUnitTests.csproj", "{42AE890E-7C04-4C61-B56D-908DA671A217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCommon", "Seminar7\ChatCommon.csproj", "{7036FB3C-A80C-4307-9FAA-D80EBF099360}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatCommon", "Seminar7\ChatCommon.csproj", "{7036FB3C-A80C-4307-9FAA-D80EBF099360}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Unittests\UnitTests.csproj", "{4ECB85B0-763C-490D-9575-B9D51ED6C9A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatDB", "ChatDB\ChatDB.csproj", "{20963361-CB8B-461B-BD22-DF9AB5E904AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatDB", "ChatDB\ChatDB.csproj", "{20963361-CB8B-461B-BD22-DF9AB5E904AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatNetwork", "ChatNetwork\ChatNetwork.csproj", "{28749B33-E73B-4D5D-8DF6-A93193DD3D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatNetwork", "ChatNetwork\ChatNetwork.csproj", "{28749B33-E73B-4D5D-8DF6-A93193DD3D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApp", "ChatApp\ChatApp.csproj", "{0BF91DEB-CFBC-4EB8-894F-E8FA3CE5A5D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatApp", "ChatApp\ChatApp.csproj", "{0BF91DEB-CFBC-4EB8-894F-E8FA3CE5A5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartSolution", "StartSolution\StartSolution.csproj", "{0532D257-C6FC-44D1-B33B-CCEC481B631A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{0BF91DEB-CFBC-4EB8-894F-E8FA3CE5A5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF91DEB-CFBC-4EB8-894F-E8FA3CE5A5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF91DEB-CFBC-4EB8-894F-E8FA3CE5A5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0532D257-C6FC-44D1-B33B-CCEC481B631A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0532D257-C6FC-44D1-B33B-CCEC481B631A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0532D257-C6FC-44D1-B33B-CCEC481B631A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0532D257-C6FC-44D1-B33B-CCEC481B631A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

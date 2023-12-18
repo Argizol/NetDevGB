@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ChatCommon.Abstractions
 {
-    internal interface ImessageSourceClient<T>
+    public interface IMessageSourceClient<T>
     {
         Task SendAsync(NetMessage message, T ep);
 

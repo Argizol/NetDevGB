@@ -1,26 +1,22 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using ChatCommon.Abstractions;
+using ChatCommon.Models;
+using ChatDB;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using UnitTests.Abstracts;
-using UnitTests.Models;
 
-namespace UnitTests.Services
+
+namespace ChatApp
+
 {
-    public class Server 
+    public class Server<T> 
     {
-        Dictionary<string, IPEndPoint> clients = new Dictionary<string, IPEndPoint>();
-        private readonly IMessageSource _messageSouce;
-        private IPEndPoint ep;
-        public Server(IMessageSource messageSouce)
+        Dictionary<string, T> clients = new Dictionary<string, T>();
+        private readonly IMessageSourceServer<T> _messageSource;
+        private T ep;
+        public Server(IMessageSourceServer<T> messageSource)
         {
-            _messageSouce = messageSouce;
-            ep = new IPEndPoint(IPAddress.Any, 0);
+            _messageSource = messageSource;
+            ep = _messageSource.CreateEndpoint();
         }
 
         bool work = true;
@@ -33,7 +29,7 @@ namespace UnitTests.Services
         {
             Console.WriteLine($" Message Register name = {message.NickNameFrom}");
 
-            if (clients.TryAdd(message.NickNameFrom, message.EndPoint))
+            if (clients.TryAdd(message.NickNameFrom, _messageSource.CopyEndpoint(message.EndPoint)))
             {
                 using (ChatContext context = new ChatContext())
                 {
@@ -46,7 +42,7 @@ namespace UnitTests.Services
         }
         private async Task RelyMessage(NetMessage message)
         {
-            if (clients.TryGetValue(message.NickNameTo, out IPEndPoint ep))
+            if (clients.TryGetValue(message.NickNameTo, out T ep))
             {
                 int? id = 0;
                 using (var ctx = new ChatContext())
@@ -63,7 +59,7 @@ namespace UnitTests.Services
 
                 message.Id = id;
 
-                await _messageSouce.SendAsync(message, ep);
+                await _messageSource.SendAsync(message, ep);
 
                 Console.WriteLine($"Message Relied, from = {message.NickNameFrom} to = {message.NickNameTo}");
             }
@@ -109,7 +105,7 @@ namespace UnitTests.Services
             {
                 try
                 {
-                    var message = _messageSouce.Receive(ref ep);
+                    var message = _messageSource.Receive(ref ep);
                     Console.WriteLine(message.ToString());
                     await ProcessMessage(message);
 

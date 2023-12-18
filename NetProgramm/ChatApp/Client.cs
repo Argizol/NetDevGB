@@ -1,22 +1,23 @@
 ﻿using System.Net.Sockets;
 using System.Net;
-using UnitTests.Abstracts;
-using UnitTests.Models;
+using ChatCommon.Abstractions;
+using ChatCommon.Models;
 
-namespace UnitTests.Services
+namespace ChatApp
+
 {
-    public class Client
+    public class Client<T>
     {
         public readonly string _name;
        
-        public IMessageSource _messageSouce;
-        public IPEndPoint remoteEndPoint;
-        public Client(string name, string address, int port)
+        public IMessageSourceClient<T> _messageSource;
+        public T remoteEndPoint;
+        public Client(IMessageSourceClient<T> messageSourceClient, string name)
         {
             this._name = name;          
 
-            _messageSouce = new UdpMessageSouce();
-            remoteEndPoint = new IPEndPoint(IPAddress.Parse(address), port);
+            _messageSource = messageSourceClient;
+            remoteEndPoint = _messageSource.CreateEndpoint();
         }
 
         public UdpClient udpClientClient = new UdpClient();
@@ -26,7 +27,7 @@ namespace UnitTests.Services
             {
                 try
                 {
-                    var messageReceived = _messageSouce.Receive(ref remoteEndPoint);
+                    var messageReceived = _messageSource.Receive(ref remoteEndPoint);
 
                     Console.WriteLine($"Получено сообщение от {messageReceived.NickNameFrom}:");
                     Console.WriteLine(messageReceived.Text);
@@ -41,18 +42,18 @@ namespace UnitTests.Services
             }
         }
 
-        public async Task Confirm(NetMessage message, IPEndPoint remoteEndPoint)
+        public async Task Confirm(NetMessage message, T remoteEndPoint)
         {
             message.Command = Command.Confirmation;
-            await _messageSouce.SendAsync(message, remoteEndPoint);
+            await _messageSource.SendAsync(message, remoteEndPoint);
         }
 
 
-        public void Register(IPEndPoint remoteEndPoint)
+        public void Register(T remoteEndPoint)
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Any, 0);
             var message = new NetMessage() { NickNameFrom = _name, NickNameTo = null, Text = null, Command = Command.Register, EndPoint = ep };
-            _messageSouce.SendAsync(message, remoteEndPoint);
+            _messageSource.SendAsync(message, remoteEndPoint);
             Console.WriteLine("Мы тута");
         }
 
@@ -74,7 +75,7 @@ namespace UnitTests.Services
 
                     var message = new NetMessage() { Command = Command.Message, NickNameFrom = _name, NickNameTo = nameTo, Text = messageText };
 
-                    await _messageSouce.SendAsync(message, remoteEndPoint);
+                    await _messageSource.SendAsync(message, remoteEndPoint);
 
                     Console.WriteLine("Сообщение отправлено.");
                 }
@@ -89,7 +90,7 @@ namespace UnitTests.Services
         {
             //udpClientClient = new UdpClient(port);
 
-            await ClientListener();
+            new Thread(async () => await ClientListener()).Start();
 
             await ClientSender();
 
