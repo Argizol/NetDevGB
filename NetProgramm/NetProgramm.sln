@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFSeminar", "EF\EFSeminar.c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "D:\TelegramDownload\Lesson6\UnitTests.csproj", "{6C89C219-F626-44F2-B028-FAB260FD261C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClientUnitTests", "ChatClientUnitTests\ChatClientUnitTests.csproj", "{42AE890E-7C04-4C61-B56D-908DA671A217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatClientUnitTests", "ChatClientUnitTests\ChatClientUnitTests.csproj", "{42AE890E-7C04-4C61-B56D-908DA671A217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
