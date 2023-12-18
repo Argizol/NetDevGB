@@ -12,7 +12,6 @@ namespace ChatClientUnitTests
         [Test]
         public async Task ClientListener_ReceivesMessage_CallsConfirm()
         {
-            // Arrange
             var name = "TestClient";
             var address = "127.0.0.1";
             var port = 1234;
@@ -26,16 +25,14 @@ namespace ChatClientUnitTests
                 udpClientClient = udpClientMock.Object
             };
 
-            var remoteEndPoint = new IPEndPoint(IPAddress.Parse("192.168.0.1"), 5678);
+            var remoteEndPoint = new IPEndPoint(IPAddress.Any, 5678);
             var netMessage = new NetMessage { NickNameFrom = "Sender", Text = "Hello", Command = Command.Message };
 
             messageSourceMock.Setup(m => m.Receive(ref remoteEndPoint)).Returns(netMessage);
             messageSourceMock.Setup(m => m.SendAsync(It.IsAny<NetMessage>(), It.IsAny<IPEndPoint>())).Returns(Task.CompletedTask);
 
-            // Act
             await client.ClientListener();
 
-            // Assert
             messageSourceMock.Verify(m => m.Receive(ref remoteEndPoint), Times.Once);
             messageSourceMock.Verify(m => m.SendAsync(It.IsAny<NetMessage>(), remoteEndPoint), Times.Once);
         }
@@ -43,7 +40,7 @@ namespace ChatClientUnitTests
         [Test]
         public void Register_CallsMessageSourceSendAsync()
         {
-            // Arrange
+
             var name = "TestClient";
             var address = "127.0.0.1";
             var port = 1234;
@@ -57,12 +54,11 @@ namespace ChatClientUnitTests
                 udpClientClient = udpClientMock.Object
             };
 
-            var remoteEndPoint = new IPEndPoint(IPAddress.Parse("192.168.0.1"), 5678);
+            var remoteEndPoint = new IPEndPoint(IPAddress.Any, 5678);
 
-            // Act
+
             client.Register(remoteEndPoint);
 
-            // Assert
             messageSourceMock.Verify(m => m.SendAsync(It.IsAny<NetMessage>(), remoteEndPoint), Times.Once);
         }
 
