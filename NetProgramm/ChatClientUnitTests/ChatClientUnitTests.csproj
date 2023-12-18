@@ -18,8 +18,4 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="D:\TelegramDownload\Lesson6\UnitTests.csproj" />
-  </ItemGroup>
-
 </Project>

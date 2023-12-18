@@ -20,7 +20,7 @@ namespace UnitTests.Services
         }
 
         public UdpClient udpClientClient = new UdpClient();
-        public async void ClientListener()
+        public async Task ClientListener()
         {
             while (true)
             {
@@ -89,7 +89,7 @@ namespace UnitTests.Services
         {
             //udpClientClient = new UdpClient(port);
 
-            ClientListener();
+            await ClientListener();
 
             await ClientSender();
 
