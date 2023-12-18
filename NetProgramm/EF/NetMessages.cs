@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace EFSeminar
+namespace UnitTests
 {
     public enum Command
     {

@@ -9,7 +9,7 @@ namespace NetProgramm
 {
     internal class Message
     {
-        public string Text {  get; set; }
+        public string Text { get; set; } = null!;
         public DateTime DateTime { get; set; }
         public string? NickNameFrom { get; set; }
         public string? NickNameTo { get; set; }

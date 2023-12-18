@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDPClient", "UDPClient\UDPC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Threads", "Threads\Threads.csproj", "{99655D88-E31F-43DA-AF42-955BAB5D1D23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFSeminar", "EF\EFSeminar.csproj", "{F5C60112-04D9-48E8-8B16-8150E1C12C9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFSeminar", "EF\EFSeminar.csproj", "{F5C60112-04D9-48E8-8B16-8150E1C12C9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "D:\TelegramDownload\Lesson6\UnitTests.csproj", "{6C89C219-F626-44F2-B028-FAB260FD261C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClientUnitTests", "ChatClientUnitTests\ChatClientUnitTests.csproj", "{42AE890E-7C04-4C61-B56D-908DA671A217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{F5C60112-04D9-48E8-8B16-8150E1C12C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5C60112-04D9-48E8-8B16-8150E1C12C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5C60112-04D9-48E8-8B16-8150E1C12C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C89C219-F626-44F2-B028-FAB260FD261C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C89C219-F626-44F2-B028-FAB260FD261C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C89C219-F626-44F2-B028-FAB260FD261C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C89C219-F626-44F2-B028-FAB260FD261C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42AE890E-7C04-4C61-B56D-908DA671A217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42AE890E-7C04-4C61-B56D-908DA671A217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42AE890E-7C04-4C61-B56D-908DA671A217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42AE890E-7C04-4C61-B56D-908DA671A217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,9 @@ using System.Net.Sockets;
 using System.Text;
 
 
-namespace NetProgramm
+
+
+namespace UnitTests
 {
     internal class UDPServer
     {
@@ -61,6 +63,7 @@ namespace NetProgramm
                         id = msg.MessageId;
                     }
 
+                    message.Id = id;
                     var forwardMessageJson = new NetMessage()
                     {
                         Id = id,
